@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,7 +40,20 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
+  # Use sqlite3 as the database for Active Record
+  # use only in development to make compatible with Heroku
+  gem 'sqlite3'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
+group :production do
+  #postgres as required by Heroku
+  gem 'pg'
+  #not sure what this one is exactuly required for (except Heroku compatibility)
+  gem 'rails_12factor'
+
+end
+
+gem 'httparty', '0.13.5'
